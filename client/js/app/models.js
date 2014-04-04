@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('chatterModels', []).
-  factory('Messages', [
+  factory('Tasks', [
   	'$meteorCollection', 
   	function($meteorCollection) {
-      return $meteorCollection('messages');
+      return $meteorCollection('tasks');
   }]).
   factory('Accounts', [
   	'$meteorCollection', 

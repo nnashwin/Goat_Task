@@ -1,8 +1,8 @@
 Meteor.startup(function () {
-    if (Messages.find().count() === 0) {
-        Messages.insert({
-        	username: 'Alex', 
-        	content: 'Hello world!'
+    if (Tasks.find().count() === 0) {
+        Tasks.insert({
+        	task: 'Alex', 
+        	date: 'Hello world!'
         });
     }
 });

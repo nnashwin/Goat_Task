@@ -36,9 +36,9 @@ angular.module('chatterControllers', []).
   ]).
   controller('HomeCtrl', [
     '$scope',
-    'Messages',
-    function ($scope, Messages) {
-      $scope.messages = Messages.find({});
+    'Tasks',
+    function ($scope, Tasks) {
+      $scope.tasks = Tasks.find({});
     }
   ]).
   controller('AboutCtrl', [
@@ -47,24 +47,27 @@ angular.module('chatterControllers', []).
       // Nothing.
     }
   ]).
-  controller('CreateMessageCtrl', [
+  controller('CreateTaskCtrl', [
     '$scope',
-    'Messages',
-    function ($scope, Messages) {
-      $scope.createmessage = function() {
-        if ($scope.createMessageForm.$valid){
-          Messages.insert({
-            username : $scope.username,
-            content : $scope.content
+    'Tasks',
+    function ($scope, Tasks) {
+      $scope.createTask = function() {
+        console.log("here");
+        console.log($scope.createTaskForm);
+        console.log($scope.createTaskForm.$valid);
+        if ($scope.createTaskForm.$valid){
+          Tasks.insert({
+            task : $scope.task,
+            date : $scope.date
           });
         } 
       };
     }
   ]).
-  controller('MessageListItemCtrl', [
+  controller('TaskListItemCtrl', [
     '$scope',
-    'Messages',
-    function ($scope, Messages) {
+    'Tasks',
+    function ($scope, Tasks) {
         // Nothing.
     }
   ]).

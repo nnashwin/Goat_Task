@@ -1,4 +1,4 @@
-Messages.allow({
+Tasks.allow({
   insert : function (userId, doc) {
   	doc.createdAt = new Date().getTime();
   	return true; 

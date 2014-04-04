@@ -1,3 +1,3 @@
 'use strict';
 
-Meteor.subscribe('messages');
+Meteor.subscribe('tasks');
