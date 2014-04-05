@@ -104,6 +104,20 @@ angular.module('chatterControllers', []).
           );
         } 
       };
+      $scope.createLogin = function() {
+        console.log($scope.createLoginForm);
+      console.log($scope.createLoginForm.$valid);
+        if ($scope.createLoginForm.$valid) {
+          Accounts.createUser(
+            $scope.username,
+            $scope.email,
+            $scope.password,
+            {
+              bleet: 0
+            }
+          );
+        }
+      };
     }
   ]);
 
