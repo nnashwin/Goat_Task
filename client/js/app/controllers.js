@@ -58,12 +58,29 @@ angular.module('chatterControllers', []).
         if ($scope.createTaskForm.$valid){
           Tasks.insert({
             task : $scope.task,
-            date : $scope.date
+            date : $scope.date,
           });
         } 
       };
     }
   ]).
+  controller('CreateUserCtrl', [
+    '$scope',
+    'Users',
+    function ($scope, Users) {
+      $scope.createUser = function() {
+        if ($scope.createUserForm.$value) {
+          Users.insert({
+            username : $scope.username,
+            created_at: Date.now(),
+            email : $scope.email,
+            password : $scope.password,
+            bleet : 0
+          });
+        }
+      };
+    }
+    ]).
   controller('TaskListItemCtrl', [
     '$scope',
     'Tasks',
