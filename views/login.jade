@@ -1,0 +1,9 @@
+extends layout
+
+block body
+  div(data-ng-controller='UserCtrl')
+    h2 Sign in!
+      form( ng-submit='login(user)')
+        input#username( data-ng-model='user.username', type='text', placeholder='Please enter username')
+        input( data-ng-model='user.password', type='text', placeholder='Please enter password')
+        button( class='btn btn-success', data-ng-click='' ) Submit

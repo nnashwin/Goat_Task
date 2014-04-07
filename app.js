@@ -6,6 +6,7 @@
 var express = require('express'),
   routes = require('./routes'),
   tasks = require('./routes/tasks'),
+  users = require('./routes/users'),
   api = require('./routes/api'),
   http = require('http'),
   path = require('path');
@@ -47,6 +48,7 @@ if (app.get('env') === 'production') {
 app.get('/', routes.index);
 app.get('/tasks', tasks.list);
 app.post('/tasks', tasks.add);
+app.post('/login/newRegister', users.login);
 // app.get('/tasks', tasks.list);
 // app.post('/tasks', tasks.add);
 

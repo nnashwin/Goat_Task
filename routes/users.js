@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Goat_Task');
 
 var UserSchema = mongoose.Schema({
 	username: String,
@@ -9,7 +8,7 @@ var UserSchema = mongoose.Schema({
 
 var User = mongoose.model('User', UserSchema);
 
-exports.add = function (req, res) {
+exports.register = function (req, res) {
 
 	var newUser = new User(req.body);
 	newUser.save(function(err, user) {
@@ -19,3 +18,7 @@ exports.add = function (req, res) {
 	});
 
 };
+
+exports.login = function (req, res) {
+
+}

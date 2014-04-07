@@ -30,7 +30,7 @@ angular.module('myApp.controllers', []).
       error(function (data, status, headers, config) {
         $scope.name = 'ERROR!!!';
       });
-    };
+    }
 
     // $http({
     //   method: 'GET',
@@ -42,5 +42,24 @@ angular.module('myApp.controllers', []).
     // error(function (data, status, headers, config) {
     //   $scope.name = 'Error!';
     // });
-
+  })
+  .controller('UserCtrl', function($scope) {
+    $scope.register = function (users) {
+      $http({
+        method: 'POST',
+        url: '/login/newRegister',
+        data: user
+      }).
+      success(function (data, status, headers, config) {
+        console.log(data);
+      }).
+      error(function (data, status, headers, config) {
+        $scope.name = 'Error!!!';
+      });
+    }
+    $scope.login = function (username, password) {
+      
+    }
   });
+
+
