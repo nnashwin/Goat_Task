@@ -2,9 +2,8 @@
 
 /* Controllers */
 
-// angular.module('myModule', ['ui.bootstrap']);
 
-angular.module('myApp.controllers', []).
+angular.module('myApp.controllers', ['ui.bootstrap']).
   controller('AppCtrl', function($scope, $http) {
     $scope.tasks = [];
 
