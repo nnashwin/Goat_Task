@@ -25,7 +25,8 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
         data: task
       }).
       success(function (data, status, headers, config) {
-        console.log(data);
+        var newArray = $scope.tasks.unshift(data);
+        return newArray;
       }).
       error(function (data, status, headers, config) {
         $scope.name = 'ERROR!!!';
@@ -40,12 +41,8 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
         url: '/tasks/' + task._id
       }).
       success(function (data, status, headers, config) {
-            console.log(task);
-            console.log(task._id);
             var delete_index = $scope.tasks.indexOf(task);
-            console.log(delete_index);
             var newArray = $scope.tasks.splice(delete_index, 1);
-            console.log($scope.tasks);
           return newArray;
         }).
       error(function (data, status, headers,config) {
