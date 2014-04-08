@@ -10,9 +10,13 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
+    when('/login/newRegister', {
+      templateUrl: 'partials/register.html',
+      controller: 'LoginCtrl'
+    }).
     when('/login', {
       templateUrl: 'partials/login.html',
-      controller: 'UserCtrl'
+      controller: 'LoginCtrl'
     }).
     when('/view2', {
       templateUrl: 'partials/partial2',

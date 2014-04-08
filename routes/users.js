@@ -2,8 +2,12 @@ var mongoose = require('mongoose');
 
 var UserSchema = mongoose.Schema({
 	username: String,
+	email: String,
 	password: String,
-	bleet: Number
+	bleet: {
+		type: Number,
+		default: 0
+	}
 });
 
 var User = mongoose.model('User', UserSchema);
@@ -14,11 +18,12 @@ exports.register = function (req, res) {
 	newUser.save(function(err, user) {
 		if(err) res.json(err);
 
-		res.json(tweet);
+		res.json(user);
 	});
 
 };
 
 exports.login = function (req, res) {
+
 
 }

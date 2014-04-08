@@ -1,0 +1,11 @@
+<form role="form" class="form-inline" name="createTaskForm" ng-controller="CreateTaskCtrl" ng-submit="createTask()">
+	<div class="form-group">
+		<label class="sr-only" for="title">Task</label>
+		<input ng-model="task" type="text" class="form-control" id="task" placeholder="Task">
+	</div>
+	<div class="form-group">
+		<label class="sr-only" for="Date">Date</label>
+		<input ng-model="date" type="date" class="form-control" id="date" placeholder="Date">
+	</div>
+	<button type="submit" class="btn btn-default">Create</button>
+</form>

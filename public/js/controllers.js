@@ -43,8 +43,9 @@ angular.module('myApp.controllers', []).
     //   $scope.name = 'Error!';
     // });
   })
-  .controller('UserCtrl', function($scope) {
-    $scope.register = function (users) {
+  .controller('LoginCtrl', function($scope, $http) {
+    $scope.register = function (user) {
+
       $http({
         method: 'POST',
         url: '/login/newRegister',
@@ -56,8 +57,8 @@ angular.module('myApp.controllers', []).
       error(function (data, status, headers, config) {
         $scope.name = 'Error!!!';
       });
-    }
-    $scope.login = function (username, password) {
+    };
+    $scope.login = function (user) {
       
     }
   });

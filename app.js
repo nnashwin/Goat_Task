@@ -48,7 +48,8 @@ if (app.get('env') === 'production') {
 app.get('/', routes.index);
 app.get('/tasks', tasks.list);
 app.post('/tasks', tasks.add);
-app.post('/login/newRegister', users.login);
+app.post('/login/newRegister', users.register);
+// app.get('/login/newRegister', users.)
 // app.get('/tasks', tasks.list);
 // app.post('/tasks', tasks.add);
 
