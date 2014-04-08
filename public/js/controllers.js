@@ -5,20 +5,20 @@
 
 angular.module('myApp.controllers', ['ui.bootstrap']).
   controller('AppCtrl', function($scope, $http) {
-    $scope.tasks = [];
+      $scope.tasks = [];
 
-    //list tasks directive
-    $http.get('/tasks').
-    success(function (data, status, headers, config) {
-      $scope.tasks = data;
-    }).
-    error(function (data, status, headers, config) {
-      $scope.tasks = [
-      {
-        body: data,
-      }]
-    });
-
+      //list tasks directive
+      $http.get('/tasks').
+      success(function (data, status, headers, config) {
+        $scope.tasks = data;
+        console.log($scope.tasks);
+      }).
+      error(function (data, status, headers, config) {
+        $scope.tasks = [
+        {
+          body: data,
+        }]
+      });
     $scope.save = function(task) {
       $http({
         method: 'POST',
@@ -34,19 +34,24 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
     }
 
     $scope.deleteAdd = function(taskid) {
+      console.log($scope.tasks);
       $http({
         method: 'DELETE',
         url: '/tasks/' + taskid
       }).
       success(function (data, status, headers, config) {
-            var delete_index = $scope.task.indexOf(taskid);
-            $scope.task.splice(delete_index, 1);
+            console.log(data);
+            console.log(taskid);
+            console.log(status);
+            console.log(headers);
+            console.log(config);
+            var delete_index = $scope.tasks.indexOf(taskid);
+            $scope.tasks.splice(delete_index, 1);
           return $scope.tasks;
         }).
       error(function (data, status, headers,config) {
         $scope.name ="Error!!";
       });
-
 
 
     // $http({
