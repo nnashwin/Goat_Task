@@ -40,11 +40,15 @@ angular.module('myApp.controllers', []).
         url: '/tasks/' + taskid
       }).
       success(function (data, status, headers, config) {
-        console.log(data);
-      }).
+            var delete_index = $scope.task.indexOf(taskid);
+            $scope.task.splice(delete_index, 1);
+          return $scope.tasks;
+        }).
       error(function (data, status, headers,config) {
         $scope.name ="Error!!";
       });
+
+
 
     // $http({
     //   method: 'GET',

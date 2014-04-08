@@ -1,7 +1,7 @@
 extends layout
 
 block body
-  div(data-ng-controller='UserCtrl')
+  div(data-ng-controller='LoginCtrl')
     h2 Sign in!
       form( ng-submit='login(user)')
         input#username( data-ng-model='user.username', type='text', placeholder='Please enter username')

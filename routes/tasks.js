@@ -39,8 +39,8 @@ exports.deleteAdd = function (req, res) {
 		if(err) return console.log('Task Not Found!');
 		res.json({success: true});
 	});
-	User.findOneAndUpdate( {_id: req.paramd.id}, function(err, post) {
-		if(err) return console.log('No User');
-		res.json({success: 'usertrue'});
-	})
+	// User.findOneAndUpdate( {_id: req.paramd.id}, function(err, post) {
+	// 	if(err) return console.log('No User');
+	// 	res.json({success: 'usertrue'});
+	// })
 };

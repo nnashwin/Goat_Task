@@ -20,6 +20,7 @@
     <li ng-repeat="task in tasks">
     <p class="body">{{ task.task }}</p>
       <p class="completion">{{ task.dateComplete | date: 'short' }}</p><span class="timestamp">{{ task.timestamp | date: "mediumDate" }}</span>
+      <input type="hidden">{{task._id}}
       <input type='checkbox' ng-click="deleteAdd(task._id)">
     </li>
   </ul>
