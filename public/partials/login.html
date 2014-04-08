@@ -1,9 +1,9 @@
-<div data-ng-controller='UserCtrl'>
+<div data-ng-controller='LoginCtrl'>
 	<h2>Sign in!</h2>
-		<form ng-submit='login(user)'>
+		<form>
 			<input data-ng-model='user.username' id='username' type="text" placeholder='Please enter username'/><br/>
 			<input data-ng-model='user.password', type="text" placeholder='Please enter password'/><br/>
-			<button class='btn btn-success', data-ng-click=''> Login!</button>
+			<a class='btn btn-success', data-ng-click='loginUser(user)'> Login!</a>
 		</form>
 </div>
-<a ng-href="/login/newRegister" class='btn btn-success'><button>Sign up!</button></a>
+<a ng-href="/login/newRegister" class='btn btn-success'>Sign up!</a>

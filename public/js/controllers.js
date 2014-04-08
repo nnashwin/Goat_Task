@@ -10,7 +10,6 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
       $http.get('/tasks').
       success(function (data, status, headers, config) {
         $scope.tasks = data;
-        console.log($scope.tasks);
       }).
       error(function (data, status, headers, config) {
         $scope.tasks = [
@@ -73,15 +72,21 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
         data: user
       }).
       success(function (data, status, headers, config) {
-        console.log(data);
+        console.log('user saved!');
       }).
       error(function (data, status, headers, config) {
         $scope.name = 'Error!!!';
       });
 
     };
-    $scope.login = function (user) {
-      
+    $scope.loginUser = function (user) {
+      console.log(user);
+      // $http({
+      //   method: 'POST',
+      //   url: '/login',
+      //   user: user
+      // });
+      $http.post('/login', user);
     }
   })
   .controller('ProgressCtrl', function($scope) {

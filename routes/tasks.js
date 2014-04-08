@@ -35,10 +35,14 @@ exports.add = function (req, res) {
 }
 
 exports.deleteAdd = function (req, res) {
-	Task.findOneAndRemove( {_id: req.params.id}, function (err, post) {
+	Task.findOneAndRemove( {_id: req.params.id}, function (err, task) {
 		if(err) return console.log('Task Not Found!');
 		res.json({success: true});
 	});
+	// User.findOneAndUpdate( {_id: req.session.id}, function (err, user) {
+	// 	if (err) return console.log('User Not Working');
+	// 	res.json({success: true})
+	// })
 	// User.findOneAndUpdate( {_id: req.paramd.id}, function(err, post) {
 	// 	if(err) return console.log('No User');
 	// 	res.json({success: 'usertrue'});
