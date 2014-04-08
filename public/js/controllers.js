@@ -2,7 +2,6 @@
 
 /* Controllers */
 
-
 angular.module('myApp.controllers', ['ui.bootstrap']).
   controller('AppCtrl', function($scope, $http) {
       $scope.tasks = [];
@@ -31,23 +30,23 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
       error(function (data, status, headers, config) {
         $scope.name = 'ERROR!!!';
       });
+      console.log($scope.task);
     }
 
-    $scope.deleteAdd = function(taskid) {
-      console.log($scope.tasks);
+    $scope.deleteAdd = function(task) {
+      
       $http({
         method: 'DELETE',
-        url: '/tasks/' + taskid
+        url: '/tasks/' + task._id
       }).
       success(function (data, status, headers, config) {
-            console.log(data);
-            console.log(taskid);
-            console.log(status);
-            console.log(headers);
-            console.log(config);
-            var delete_index = $scope.tasks.indexOf(taskid);
-            $scope.tasks.splice(delete_index, 1);
-          return $scope.tasks;
+            console.log(task);
+            console.log(task._id);
+            var delete_index = $scope.tasks.indexOf(task);
+            console.log(delete_index);
+            var newArray = $scope.tasks.splice(delete_index, 1);
+            console.log($scope.tasks);
+          return newArray;
         }).
       error(function (data, status, headers,config) {
         $scope.name ="Error!!";
@@ -80,6 +79,7 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
       error(function (data, status, headers, config) {
         $scope.name = 'Error!!!';
       });
+
     };
     $scope.login = function (user) {
       
