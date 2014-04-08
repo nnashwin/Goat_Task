@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myModule', ['ui.bootstrap']);
+// angular.module('myModule', ['ui.bootstrap']);
 
 angular.module('myApp.controllers', []).
   controller('AppCtrl', function($scope, $http) {
@@ -34,6 +34,18 @@ angular.module('myApp.controllers', []).
       });
     }
 
+    $scope.deleteAdd = function(taskid) {
+      $http({
+        method: 'DELETE',
+        url: '/tasks/' + taskid
+      }).
+      success(function (data, status, headers, config) {
+        console.log(data);
+      }).
+      error(function (data, status, headers,config) {
+        $scope.name ="Error!!";
+      });
+
     // $http({
     //   method: 'GET',
     //   url: '/api/name'
@@ -44,6 +56,7 @@ angular.module('myApp.controllers', []).
     // error(function (data, status, headers, config) {
     //   $scope.name = 'Error!';
     // });
+    }
   })
   .controller('LoginCtrl', function($scope, $http) {
     $scope.register = function (user) {
@@ -85,21 +98,7 @@ angular.module('myApp.controllers', []).
 
     $scope.dynamic = value;
     $scope.type = type;
-  },
-
-  $scope.randomStacked = function() {
-    $scope.stacked = [];
-    var types = ['success', 'info', 'warning', 'danger'];
-
-    for ( var i = 0, n = Math.floor((Math.random() * 4) + 1); i < n; i++) {
-      var index = Math.floor((Math.random() * 4));
-      $scope.stacked.push({
-        value: Math.floor((Math.random() * 30) + 1),
-        type: types[index]
-      });
-    }
-  };
-  $scope.randomStacked();
+  }
 });
 
 

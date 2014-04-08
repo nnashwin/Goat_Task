@@ -49,6 +49,7 @@ app.get('/', routes.index);
 app.get('/tasks', tasks.list);
 app.post('/tasks', tasks.add);
 app.post('/login/newRegister', users.register);
+app.delete('/tasks/:id', tasks.deleteAdd);
 // app.get('/login/newRegister', users.)
 // app.get('/tasks', tasks.list);
 // app.post('/tasks', tasks.add);

@@ -12,10 +12,15 @@
 </div>
 <textarea id="task_task" data-ng-model="task.task" ng-maxlength="140" required="required" ng-required="string"></textarea>
 <button ng-click="save(task)">Save that task!</button>
-<input data-ng-model="task.dateComplete" type="date" name="dateComplete"/>
-<ul id="tasks">
-  <li ng-repeat="task in tasks">
+<div>
+  <input data-ng-model="task.dateComplete" type="date" name="dateComplete"/>
+  <!-- bleet button -->
+  
+  <ul id="tasks">
+    <li ng-repeat="task in tasks">
     <p class="body">{{ task.task }}</p>
-    <p class="completion">{{ task.dateComplete | date: 'short' }}</p><span class="timestamp">{{ task.timestamp | date: "mediumDate" }}</span>
-  </li>
-</ul>
+      <p class="completion">{{ task.dateComplete | date: 'short' }}</p><span class="timestamp">{{ task.timestamp | date: "mediumDate" }}</span>
+      <input type='checkbox' ng-click="deleteAdd(task._id)">
+    </li>
+  </ul>
+</div>

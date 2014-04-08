@@ -33,3 +33,14 @@ exports.add = function (req, res) {
 	});
 
 }
+
+exports.deleteAdd = function (req, res) {
+	Task.findOneAndRemove( {_id: req.params.id}, function (err, post) {
+		if(err) return console.log('Task Not Found!');
+		res.json({success: true});
+	});
+	User.findOneAndUpdate( {_id: req.paramd.id}, function(err, post) {
+		if(err) return console.log('No User');
+		res.json({success: 'usertrue'});
+	})
+};
