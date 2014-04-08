@@ -26,6 +26,7 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
       }).
       success(function (data, status, headers, config) {
         document.getElementById('task_task').value = '';
+        document.getElementById('dateComplete').value = '';
         var newArray = $scope.tasks.unshift(data);
         return newArray;
       }).
