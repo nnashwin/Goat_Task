@@ -7,6 +7,7 @@ var express = require('express'),
   routes = require('./routes'),
   tasks = require('./routes/tasks'),
   users = require('./routes/users'),
+  session = require('./routes/session'),
   api = require('./routes/api'),
   http = require('http'),
   path = require('path');
@@ -24,8 +25,11 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
+app.use(express.cookieParser('SecretSquirrelIsRealBro'));
+app.use(express.cookieSession());
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(session.checkSession);
 app.use(app.router);
 
 // development only

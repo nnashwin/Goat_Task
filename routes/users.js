@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var validator = require('validator');
+var session = require('./session');
+
 
 var UserSchema = mongoose.Schema({
   username: String,
@@ -16,6 +18,7 @@ var User = mongoose.model('User', UserSchema);
 exports.register = function (req, res) {
 
   var newUser = new User(req.body);
+  console.log(newUser);
   newUser.save(function(err, user) {
     if(err) res.json(err);
 
@@ -25,6 +28,15 @@ exports.register = function (req, res) {
 };
 
 exports.loginUser = function (req, res) {
-  console.log(req.body.username);
-  console.log(req.body.password);
+  // var parsed = validator.toString(req.body.username);
+  var result = User.findOne({ username: req.body.username }, function(err, user) {
+    if(err) return err;
+    console.log(user.password);
+    if(user.username == req.body.username && user.password == req.body.password) {
+    session.setSession(req);
+    console.log(req.session.loggedIn);
+    } 
+    // console.log(user.username);
+  });
+  // console.log(result.username);
 }

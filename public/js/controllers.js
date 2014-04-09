@@ -36,7 +36,6 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
     }
 
     $scope.deleteAdd = function(task) {
-      
       $http({
         method: 'DELETE',
         url: '/tasks/' + task._id
@@ -65,7 +64,7 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
   })
   .controller('LoginCtrl', function($scope, $http) {
     $scope.register = function (user) {
-
+      console.log(user);
       $http({
         method: 'POST',
         url: '/login/newRegister',
@@ -80,14 +79,20 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
 
     };
     $scope.loginUser = function (user) {
-      console.log(user);
-      // $http({
-      //   method: 'POST',
-      //   url: '/login',
-      //   user: user
-      // });
-      $http.post('/login', user);
-    }
+      $http({
+        method: 'POST',
+        url: '/login',
+        data: user
+      }).
+      success(function (data, status, headers, config) {
+        console.log('passed to the server!')
+      }).
+      error(function (data, status, headers, config) {
+        $scope.name = 'ERRRORRR!!!';
+      });
+      // $http.post('/login', user.loginUser);
+      // console.log(user);
+    };
   })
   .controller('ProgressCtrl', function($scope) {
     $scope.max = 200;

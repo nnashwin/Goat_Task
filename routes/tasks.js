@@ -38,7 +38,7 @@ exports.deleteAdd = function (req, res) {
 	Task.findOneAndRemove( {_id: req.params.id}, function (err, task) {
 		if(err) return console.log('Task Not Found!');
 		res.json({success: true});
-	});
+		});
 	// User.findOneAndUpdate( {_id: req.session.id}, function (err, user) {
 	// 	if (err) return console.log('User Not Working');
 	// 	res.json({success: true})
