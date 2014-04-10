@@ -29,7 +29,7 @@ app.use(express.cookieParser('SecretSquirrelIsRealBro'));
 app.use(express.cookieSession());
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session.checkSession);
+app.use(session.checkSession);
 app.use(app.router);
 
 // development only
@@ -49,12 +49,14 @@ if (app.get('env') === 'production') {
 
 // serve index and view partials
 // app.get('/', routes.index);
-app.get('/', routes.index);
+
 app.get('/tasks', tasks.list);
 app.post('/tasks', tasks.add);
 app.post('/login/newRegister', users.register);
 app.post('/login', users.loginUser);
+app.get('/logout', users.logoutUser);
 app.delete('/tasks/:id', tasks.deleteAdd);
+app.get('*', routes.index);
 // app.get('/login/newRegister', users.)
 // app.get('/tasks', tasks.list);
 // app.post('/tasks', tasks.add);

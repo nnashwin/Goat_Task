@@ -31,12 +31,18 @@ exports.loginUser = function (req, res) {
   // var parsed = validator.toString(req.body.username);
   var result = User.findOne({ username: req.body.username }, function(err, user) {
     if(err) return err;
-    console.log(user.password);
     if(user.username == req.body.username && user.password == req.body.password) {
     session.setSession(req);
     console.log(req.session.loggedIn);
-    } 
-    // console.log(user.username);
+    res.send(200);
+    } else {
+
+    }
   });
-  // console.log(result.username);
+}
+
+exports.logoutUser = function (req, res) {
+  console.log('logged out');
+  req.session = null;
+  res.redirect('/login');
 }

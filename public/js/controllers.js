@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['ui.bootstrap']).
-  controller('AppCtrl', function($scope, $http) {
+  controller('AppCtrl', function($scope, $http, $location) {
       $scope.tasks = [];
 
       //list tasks directive
@@ -62,7 +62,7 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
     // });
     }
   })
-  .controller('LoginCtrl', function($scope, $http) {
+  .controller('LoginCtrl', function($scope, $http, $location) {
     $scope.register = function (user) {
       console.log(user);
       $http({
@@ -85,7 +85,8 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
         data: user
       }).
       success(function (data, status, headers, config) {
-        console.log('passed to the server!')
+        console.log('passed to the server!');
+        $location.url('/');
       }).
       error(function (data, status, headers, config) {
         $scope.name = 'ERRRORRR!!!';
@@ -93,8 +94,22 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
       // $http.post('/login', user.loginUser);
       // console.log(user);
     };
+    $scope.logout = function (user) {
+      $http({
+        method: 'GET',
+        url: '/logout',
+        data: user
+      }).
+      success(function (data, status, headers, config) {
+        console.log('winning!');
+        $location.url('/login');
+      }).
+      error(function (data, status, headers, config) {
+        console.log('Did not log out');
+      });
+    };
   })
-  .controller('ProgressCtrl', function($scope) {
+  .controller('ProgressCtrl', function($scope, $location) {
     $scope.max = 200;
     
     $scope.random = function() {
