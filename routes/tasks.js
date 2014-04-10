@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost: 27017/Goat_Task');
+var Users = require('./users');
 
 var TaskSchema = mongoose.Schema({
 	task: String,
@@ -35,6 +36,14 @@ exports.add = function (req, res) {
 }
 
 exports.deleteAdd = function (req, res) {
+	// 		
+	Users.BleetUser.findOneAndUpdate( { _id: req.session.userId }, { $inc:{ bleet: 10 } }, function(err, user) {
+		if(err) {
+			console.log("Error: " + err);
+		}
+		console.log(req.session.userId);
+		console.log(req.session.name);
+	});
 	Task.findOneAndRemove( {_id: req.params.id}, function (err, task) {
 		if(err) return console.log('Task Not Found!');
 		res.json({success: true});

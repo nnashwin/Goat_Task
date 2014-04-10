@@ -9,8 +9,3 @@ exports.checkSession = function (req, res, next) {
     res.redirect('/login');
   }
 }
-
-exports.setSession = function (req) {
-  req.session.loggedIn = true;
-}
-  

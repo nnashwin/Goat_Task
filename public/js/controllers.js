@@ -33,6 +33,7 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
         $scope.name = 'ERROR!!!';
       });
       console.log($scope.task);
+      console.log($scope.user);
     }
 
     $scope.deleteAdd = function(task) {
