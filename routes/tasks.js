@@ -44,8 +44,10 @@ exports.deleteAdd = function (req, res) {
 		console.log(req.session.userId);
 		console.log(req.session.name);
 		console.log(user.bleet);
-		if(user.bleet === 200) {
-			$('body').append("<IMG align='center ' 	" + "SRC='http://www.dickinson.edu/~braught/courses/cs131s99/Images/die.gif'> " + "<BR><BR>")
+		if(user.bleet >= 10) {
+		
+			document.write("<IMG align='center ' 	" + "SRC='http://www.dickinson.edu/~braught/courses/cs131s99/Images/die.gif'> " + "<BR><BR>");
+		// 	('body').append("<IMG align='center ' 	" + "SRC='http://www.dickinson.edu/~braught/courses/cs131s99/Images/die.gif'> " + "<BR><BR>")
 		}
 	});
 	Task.findOneAndRemove( {_id: req.params.id}, function (err, task) {
