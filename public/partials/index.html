@@ -5,10 +5,10 @@
   <a ng-click='logout(user)'>Logout</a>
 </div>
 <div ng-controller='ProgressCtrl'>
-    <h3>Progress Bar</h3>
+    <h3>{{user.name}}</h3>
     <div class='row'>
         <div class='col-sm-4'>
-            <progressbar class='progress-striped' value="22 ">22%
+            <progressbar class='progress-striped' value="44">
             </progressbar>
         </div>
     </div>
@@ -24,7 +24,7 @@
     <p class="body">{{ task.task }}</p>
       <p class="completion">{{ task.dateComplete | date: 'short' }}</p><span class="timestamp">{{ task.timestamp | date: "mediumDate" }}</span>
       <!-- <input type="hidden"/>{{task._id}} -->
-      <div ng-click="deleteAdd(task)">Goat</div>
+      <div class='goat-div' ng-click="deleteAdd(task)"></div>
     </li>
   </ul>
 </div>
